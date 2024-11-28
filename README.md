@@ -10,7 +10,7 @@ To accomplish that, we recommend you use a UNIX-like machine (Linux/macOS). Besi
 - Install Hardhat (https://hardhat.org/getting-started/)
 - Install Docker and Docker Compose (https://www.docker.com/)
 - Install Go (https://golang.org/dl/)
-- Fork the repository https://github.com/goledgerdev/goledger-challenge 
+- Fork the repository https://github.com/goledgerdev/goledger-challenge-besu 
     - Fork it, do **NOT** clone it, since you will need to send us your forked repository
 	- If you cannot fork it, create a private repository and give access to `samuelvenzi` and `Tubar2`
 
@@ -49,7 +49,7 @@ Your task is to create a simple application that interacts with a Besu blockchai
 
 ## Requirements
 
-**Programming Language:**
+1. **Programming Language:**
    - The application must be written in Go.
 
 2. **API Type:**
