@@ -108,13 +108,15 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"log/slog"
 	"strings"
+	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/goledgerdev/ethapi-go/pkg/ethereum"
+	"github.com/ethereum/go-ethereum/ethclient"
 )
 
 func ExecContract() {
@@ -123,9 +125,19 @@ func ExecContract() {
 		log.Fatal(err)
 	}
 
-	client, err := ethereum.New(context.Background(), "REPLACE: network URL")
+	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+
+	client, err := ethclient.DialContext(ctx, "REPLACE: network URL")
 	if err != nil {
-		log.Fatalf("error connecting to network: %v", err)
+		return nil, err
+	}
+
+	slog.Info("querying chain id")
+
+	chainId, err := client.ChainID(ctx)
+	if err != nil {
+		return nil, err
 	}
 	defer client.Close()
 
@@ -144,7 +156,7 @@ func ExecContract() {
 		log.Fatalf("error loading private key: %v", err)
 	}
 
-	auth, err := bind.NewKeyedTransactorWithChainID(priv, client.ChainID)
+	auth, err := bind.NewKeyedTransactorWithChainID(priv, chainId)
 	if err != nil {
 		log.Fatalf("error creating transactor: %v", err)
 	}
@@ -169,6 +181,6 @@ func ExecContract() {
 
 	fmt.Printf("transaction mined: %v\n", receipt)
 }
-```
 
+```
 To complete the challenge, you must send us the link to your repository with the alterations you made.
