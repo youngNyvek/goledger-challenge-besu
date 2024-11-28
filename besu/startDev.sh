@@ -30,6 +30,8 @@ rm -rf node/besu-3/data
 
 rm -rf genesis
 rm -rf ignition/deployments
+rm -rf artifacts
+rm -rf cache
 
 rm -rf _tmp
 
