@@ -125,19 +125,19 @@ func ExecContract() {
 		log.Fatal(err)
 	}
 
-	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
 	client, err := ethclient.DialContext(ctx, "REPLACE: network URL")
 	if err != nil {
-		return nil, err
+		log.Fatalf("error dialing node: %v", err)
 	}
 
 	slog.Info("querying chain id")
 
 	chainId, err := client.ChainID(ctx)
 	if err != nil {
-		return nil, err
+		log.Fatalf("error querying chain id: %v", err)
 	}
 	defer client.Close()
 
