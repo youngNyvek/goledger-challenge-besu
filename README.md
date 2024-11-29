@@ -203,7 +203,7 @@ import (
 func Call()  {
 	var result interface{}
 
-	abi, err := abi.JSON(strings.NewReader(ABI))
+	abi, err := abi.JSON(strings.NewReader("REPLACE: abi JSON as string goes here"))
 	if err != nil {
 		log.Fatalf("error parsing abi: %v", err)
 	}
