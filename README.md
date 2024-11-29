@@ -44,7 +44,7 @@ This will bring up a local Besu netwwork with 4 nodes. You can check the logs of
 docker logs -f besu_node-0
 ```
 
-This will also deploy a smart contract to the network. The contract is a simple storage contract that has a variable that can be set and get. If you want to check the contract's source code, you can find it in the `contracts` folder.
+This will also deploy a smart contract to the network. The contract is a simple storage contract that has a variable that can be set and get. Note that it will log the contracts address, which will be important later. If you want to check the contract's source code, you can find it in the `contracts` folder. The contract's ABI can be found in the `/besu/artifacts/contracts/SimpleStorage.sol/SimpleStorage.json` file.
 
 # The challenge
 
@@ -123,7 +123,7 @@ import (
 )
 
 func ExecContract() {
-	abi, err := abi.JSON(strings.NewReader("REPLACE: abi JSON as string goes here"))
+	abi, err := abi.JSON(strings.NewReader("REPLACE: abi JSON as string goes here")) // found under besu/artifacts/contracts/SimpleStorage.sol/SimpleStorage.json
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -206,7 +206,7 @@ import (
 func CallContract()  {
 	var result interface{}
 
-	abi, err := abi.JSON(strings.NewReader("REPLACE: abi JSON as string goes here"))
+	abi, err := abi.JSON(strings.NewReader("REPLACE: abi JSON as string goes here")) // found under besu/artifacts/contracts/SimpleStorage.sol/SimpleStorage.json
 	if err != nil {
 		log.Fatalf("error parsing abi: %v", err)
 	}
