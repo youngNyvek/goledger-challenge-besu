@@ -9,12 +9,13 @@ To accomplish that, we recommend you use a UNIX-like machine (Linux/macOS). Besi
 - Install NPM and NPX (https://www.npmjs.com/get-npm)
 - Install Hardhat (https://hardhat.org/getting-started/)
 - Install Docker and Docker Compose (https://www.docker.com/)
+- Install Besu (https://besu.hyperledger.org/private-networks/get-started/install/binary-distribution)
 - Install Go (https://golang.org/dl/)
 - Fork the repository https://github.com/goledgerdev/goledger-challenge-besu 
     - Fork it, do **NOT** clone it, since you will need to send us your forked repository
 	- If you cannot fork it, create a private repository and give access to `samuelvenzi` and `Tubar2`
 
-### Hardhat installation
+### Hardhat installation details
 
 Hardhat is a development environment to compile, deploy, test, and debug your Ethereum software. It helps developers manage and automate the recurring tasks that are inherent to the process of building smart contracts and dApps.
 
