@@ -26,6 +26,8 @@ After installing Node.js, you can install Hardhat by running the following comma
 npm install --save-dev hardhat
 ```
 
+Note: Your system might require a slightly different command to install Hardhat. Check the [Hardhat installation guide](https://hardhat.org/getting-started/) for more information.
+
 ## Set up the environment
 
 To set up the environment, you need to fork this repository. Make sure you have installed the requirements. To set up the environment, you need to run the following commands:
@@ -99,7 +101,7 @@ Remember to commit your changes to your forked repository. Commits will be used 
 
 ## Interaction with the Besu network
 
-To interact with the Besu network, you can use the Go Ethereum client. Below we provide a function that interacts with the Besu network to call a sample transaction. Feel free to include and change this function in your application.
+To interact with the Besu network, you can use the Go Ethereum client. Below we provide two functions that interact with the Besu network, one for writing data (`ExecContract`) and one for reading data (`CallContract`). Feel free to include and change this function in your application.
 
 ```go
 package main
@@ -128,7 +130,7 @@ func ExecContract() {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	client, err := ethclient.DialContext(ctx, "REPLACE: network URL")
+	client, err := ethclient.DialContext(ctx, "REPLACE: network URL") // e.g., http://localhost:8545
 	if err != nil {
 		log.Fatalf("error dialing node: %v", err)
 	}
@@ -141,7 +143,7 @@ func ExecContract() {
 	}
 	defer client.Close()
 
-	contractAddress := common.HexToAddress("REPLACE: contract address")
+	contractAddress := common.HexToAddress("REPLACE: contract address") // will be returned during startDev.sh execution
 
 	boundContract := bind.NewBoundContract(
 		contractAddress,
@@ -151,7 +153,7 @@ func ExecContract() {
 		client,
 	)
 
-	priv, err := crypto.HexToECDSA("REPLACE: private key")
+	priv, err := crypto.HexToECDSA("REPLACE: private key") // this can be found in the genesis.json file
 	if err != nil {
 		log.Fatalf("error loading private key: %v", err)
 	}
@@ -200,7 +202,7 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 )
 
-func Call()  {
+func CallContract()  {
 	var result interface{}
 
 	abi, err := abi.JSON(strings.NewReader("REPLACE: abi JSON as string goes here"))
@@ -211,13 +213,13 @@ func Call()  {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	client, err := ethclient.DialContext(ctx, "REPLACE: network URL")
+	client, err := ethclient.DialContext(ctx, "REPLACE: network URL") // e.g., http://localhost:8545
 	if err != nil {
 		log.Fatalf("error connecting to eth client: %v", err)
 	}
 	defer client.Close()
 
-	contractAddress := common.HexToAddress("REPLACE: contract address")
+	contractAddress := common.HexToAddress("REPLACE: contract address") // will be returned during startDev.sh execution
 	caller := bind.CallOpts{
 		Pending: false,
 		Context: ctx,
