@@ -1,5 +1,5 @@
 ### Definir valor no contrato
-POST http://localhost:8080/set
+POST http://localhost:8080/simple-storage/v1/api/setValue
 Content-Type: application/json
 
 {
@@ -7,4 +7,4 @@ Content-Type: application/json
 }
 
 ### Obter valor do contrato
-GET http://localhost:8080/get
+GET http://localhost:8080/simple-storage/v1/api/getValue

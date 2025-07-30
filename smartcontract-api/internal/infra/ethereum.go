@@ -1,4 +1,4 @@
-package blockchain
+package ethereum
 
 import (
 	"context"
@@ -29,7 +29,7 @@ func MustCreateContract(address string, client *ethclient.Client) *simplestorage
 	return contract
 }
 
-func MustCreateTransactor(hexKey string, client *ethclient.Client) *bind.TransactOpts {
+func MustCreateSigner(hexKey string, client *ethclient.Client) *bind.TransactOpts {
 	privateKey, err := crypto.HexToECDSA(hexKey)
 	if err != nil {
 		log.Fatalf("Erro ao carregar chave privada: %v", err)
