@@ -1,10 +1,16 @@
-### Definir valor no contrato
-POST http://localhost:8080/simple-storage/v1/api/setValue
+### Set a value on the contract (exemplo: 42)
+POST http://localhost:8080/api/v1/contract/set
 Content-Type: application/json
 
 {
-  "value": 26
+  "value": 42
 }
 
-### Obter valor do contrato
-GET http://localhost:8080/simple-storage/v1/api/getValue
+### Get the current value from the contract
+GET http://localhost:8080/api/v1/contract/get
+
+### Sync on-chain value to the database
+POST http://localhost:8080/api/v1/contract/sync
+
+### Check if the value in the database matches the on-chain value
+GET http://localhost:8080/api/v1/contract/check

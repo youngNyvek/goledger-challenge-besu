@@ -11,10 +11,7 @@ cd ..
 
 echo "🟡 Starting PostgreSQL database with Docker Compose..."
 
-cd smartcontract-api/docker
-docker-compose -f docker-compose.db.yaml up -d
-cd ../..
+cd app/
+docker-compose up -d
 
 echo "🟢 Running Go application..."
-cd smartcontract-api
-go run main.go
