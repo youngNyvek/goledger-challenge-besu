@@ -14,6 +14,8 @@ The project follows an **MVC-inspired** structure with clear separation of conce
 - **Repository**: Database access.
 - **Infrastructure**: Clients for Ethereum RPC and PostgreSQL connection.
 
+> **Note:** This project is designed to run on a **Unix-like** operating system (e.g., Linux or macOS). Ensure you execute all commands in such an environment.
+
 ---
 
 ## 📁 Project Structure
@@ -33,9 +35,9 @@ The project follows an **MVC-inspired** structure with clear separation of conce
 │   │       └── ethereum/  # Ethereum client & contract binding
 │   └── docker/            # Docker config and init scripts
 │       ├── Dockerfile
-│       ├── docker-compose.yml
-│       └── db-init/
-│           └── init.sql
+│   │   ├── docker-compose.yml
+│   │   └── db-init/
+│   │       └── init.sql
 ├── besu/                  # Besu network scripts
 │   └── startDev.sh        # Launches local QBFT network
 ├── run-all.sh             # Orchestrator script (Besu, DB, API)
@@ -64,13 +66,14 @@ This layered approach ensures single responsibility per component and improves m
 
 ### Prerequisites
 
-- **Go** 1.22+
-- **Node.js** 14+ (includes NPM/NPX)
-- **Docker** & **Docker Compose**
-- **Hardhat** (Ethereum development)
-- **Hyperledger Besu** binary installed locally
+- **Unix-like OS** (Linux or macOS)
+- **Go** 1.22+ ([Install Go](https://golang.org/dl/))
+- **Node.js** 14+ (includes NPM/NPX) ([Install NPM and NPX](https://www.npmjs.com/get-npm))
+- **Docker** & **Docker Compose** ([Install Docker and Docker Compose](https://www.docker.com/))
+- **Hardhat** (Ethereum development) ([Install Hardhat](https://hardhat.org/getting-started/))
+- **Hyperledger Besu** binary installed locally ([Install Besu](https://besu.hyperledger.org/private-networks/get-started/install/binary-distribution))
 
-> **Hardhat must be installed *****after***** cloning the repo**, inside the `besu/` directory:
+> **Hardhat must be installed *****after***** cloning the repo**, inside the `besu/` directory: *after* cloning the repo\*\*, inside the `besu/` directory:
 >
 > ```bash
 > cd besu
@@ -90,7 +93,7 @@ After the Besu network is running and PostgreSQL is up, navigate to the `app/` f
 
 ```bash
 cd app
-# Download Go module dependencies
+# Download and tidy Go module dependencies
 go mod tidy
 ```
 
