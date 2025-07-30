@@ -1,0 +1,10 @@
+### Definir valor no contrato
+POST http://localhost:8080/set
+Content-Type: application/json
+
+{
+  "value": 26
+}
+
+### Obter valor do contrato
+GET http://localhost:8080/get
