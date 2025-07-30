@@ -19,6 +19,12 @@ until docker exec goledger-db pg_isready -U admin -d goledger >/dev/null 2>&1; d
 done
 echo "🟢 Postgres is up!"
 
-echo "🟢 Running Go application..."
+echo "🟡 Preparing Go application..."
 cd app
+
+echo "🟡 Tidying Go modules..."
+go mod tidy
+echo "🟢 Go modules tidy complete!"
+
+echo "🟢 Running Go application..."
 go run main.go
